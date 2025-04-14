@@ -68,15 +68,20 @@ The script scans the following services (Cisco Reverse Telnet and rusers omitted
 ## Installation from github
 
 1. Clone the repository:
-   ```bash
+
    git clone https://github.com/<your-username>/network-security-scanner.git
    cd network-security-scanner
+
 2. Install required tools (Debian/Ubuntu):
-  ```bash
+
   sudo apt update
   sudo apt install nmap smbclient smbmap enum4linux metasploit-framework snmp smtp-user-enum ldap-utils
 
 3. Make the script executable:
-  ```bash
 
-  
+  chmod +x network_scanner.sh
+
+4. (Optional) Ensure a user list for smtp-user-enum (Default path: /usr/share/wordlists/users.txt):
+
+
+
