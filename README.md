@@ -70,7 +70,7 @@ The script scans the following services (Cisco Reverse Telnet and rusers omitted
 1. Clone the repository:
   ```bash
    git clone https://github.com/<your-username>/network-security-scanner.git
-   cd network-security-scanner
+   cd Tanker
   ```
 
 2. Install required tools (Debian/Ubuntu):
@@ -80,24 +80,24 @@ The script scans the following services (Cisco Reverse Telnet and rusers omitted
   ```
 3. Make the script executable:
   ```bash
-  chmod +x network_scanner.sh
+  chmod +x Tanker.sh
   ```  
 4. (Optional) Ensure a user list for smtp-user-enum (Default path: /usr/share/wordlists/users.txt):
 
 ## Usage
 Run the script with a single IP or CIDR range:
 ```bash
-sudo ./network_scanner.sh <IP or CIDR>
+sudo ./Tanker.sh <IP or CIDR>
 ```
 ## Examples
 
 ### Scan a single IP:
 ```bash
-sudo ./network_scanner.sh 192.168.1.1
+sudo ./Tanker.sh 192.168.1.1
 ```
 ### Scan a CIDR range:
 ```bash
-sudo ./network_scanner.sh 192.168.1.0/24
+sudo ./Tanker.sh 192.168.1.0/24
 ```
 ## Output
 ```
