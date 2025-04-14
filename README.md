@@ -68,44 +68,46 @@ The script scans the following services (Cisco Reverse Telnet and rusers omitted
 ## Installation from github
 
 1. Clone the repository:
-
+  ```bash
    git clone https://github.com/<your-username>/network-security-scanner.git
    cd network-security-scanner
+  ```
 
 2. Install required tools (Debian/Ubuntu):
-
+  ```bash
   sudo apt update
   sudo apt install nmap smbclient smbmap enum4linux metasploit-framework snmp smtp-user-enum ldap-utils
-
+  ```
 3. Make the script executable:
-
+  ```bash
   chmod +x network_scanner.sh
-
+  ```  
 4. (Optional) Ensure a user list for smtp-user-enum (Default path: /usr/share/wordlists/users.txt):
 
-# Usage
+## Usage
 Run the script with a single IP or CIDR range:
-
+```bash
 sudo ./network_scanner.sh <IP or CIDR>
+```
+## Examples
 
-Examples
-
-Scan a single IP:
-
+# Scan a single IP:
+```bash
 sudo ./network_scanner.sh 192.168.1.1
-
-Scan a CIDR range:
-
+```
+# Scan a CIDR range:
+```bash
 sudo ./network_scanner.sh 192.168.1.0/24
-
-Output
-
+```
+## Output
+```
 Terminal: Real-time progress with colors (e.g., green for hosts, red for errors), showing hosts/services scanned, percentages, and elapsed time.
 
 Report: Saved as scan_report_YYYY-MM-DD_HHMMSS.txt, with one IP header per host, tool outputs, and dashed separators.
+```
 
-Sample Terminal Output
-
+## Sample Terminal Output
+```bash
 Checking for required tools...
 nmap is installed
 smbclient is installed
@@ -140,21 +142,18 @@ Host: 192.168.1.2
 Scan completed in 00:05:23. Report saved to scan_report_2025-04-14_123456.txt
 ```
 
-Notes
+## Notes
+
 Root Privileges: Required for UDP scans and certain Nmap scripts (sudo recommended).
-
 Missing Tools: The script skips scans for uninstalled tools, ensuring functionality without errors.
-
 SMTP User List: Adjust /usr/share/wordlists/users.txt if the default path differs.
-
 Metasploit: Searches for exploits; extend with specific modules for deeper testing.
-
 LDAP: Uses anonymous binds; credentials may yield more data.
-
 Performance: Optimized with open-port checks, efficient parsing, and sequential scans.
 
-Contributing
-Contributions are welcome! Please:
+## Contributing
+
+Contributions are welcome!
 Fork the repository.
 
 Create a feature branch (git checkout -b feature/new-feature).
@@ -165,11 +164,15 @@ Push to the branch (git push origin feature/new-feature).
 
 Open a pull request.
 
-License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
-Disclaimer
+
+## Disclaimer
+
 This tool is for authorized security testing only. Ensure you have permission to scan target networks. The authors are not responsible for misuse or damage caused by this script.
-Contact
+
+## Contact
+
 For issues or suggestions, open a GitHub issue.
 
 
