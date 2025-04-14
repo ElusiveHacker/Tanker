@@ -119,8 +119,8 @@ Running Nmap TCP scan with plugins...
 Progress: 1/2 hosts (50%), 1/10 services (10%) | Elapsed: 00:00:45
 ...
 Scan completed in 00:05:23. Report saved to scan_report_2025-04-14_123456.txt
-
-Sample Report Format
+```
+## Sample Report Format
 ```bash
 Scan Report - 2025-04-14 12:34:56
 Checking for required tools...
