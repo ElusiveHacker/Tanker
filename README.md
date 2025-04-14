@@ -91,11 +91,11 @@ sudo ./network_scanner.sh <IP or CIDR>
 ```
 ## Examples
 
-# Scan a single IP:
+### Scan a single IP:
 ```bash
 sudo ./network_scanner.sh 192.168.1.1
 ```
-# Scan a CIDR range:
+### Scan a CIDR range:
 ```bash
 sudo ./network_scanner.sh 192.168.1.0/24
 ```
@@ -165,6 +165,7 @@ Push to the branch (git push origin feature/new-feature).
 Open a pull request.
 
 ## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Disclaimer
