@@ -100,7 +100,7 @@ sudo ./Tanker.sh 192.168.1.1
 sudo ./Tanker.sh 192.168.1.0/24
 ```
 ## Output
-```
+```bash
 Terminal: Real-time progress with colors (e.g., green for hosts, red for errors), showing hosts/services scanned, percentages, and elapsed time.
 
 Report: Saved as scan_report_YYYY-MM-DD_HHMMSS.txt, with one IP header per host, tool outputs, and dashed separators.
