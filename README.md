@@ -13,14 +13,6 @@ A Bash script to automate targeted service enumeration on specific ports using *
 - Uses `enum4linux` for extended SMB enumeration
 - Generates a detailed, timestamped report
 - Skips missing Nmap scripts gracefully with warnings
-
-Service | Port | Protocol | Nmap Scripts
-SSH | 22 | TCP | ssh2-enum-algos
-SMB | 445 | TCP | smb-enum-shares, smb-enum-users, etc.
-MSSQL | 1433 | TCP | ms-sql-info, ms-sql-ntlm-info
-MySQL | 3306 | TCP | mysql-enum, mysql-empty-password, etc.
-SNMP | 161 | UDP | snmp-sysdescr
-... | ... | ... | ...
 ---
 
 ## 🛠️ Requirements
