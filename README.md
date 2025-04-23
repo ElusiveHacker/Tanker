@@ -39,4 +39,4 @@ You can easily modify or extend this list in the `SERVICES` array in the script.
 
 ```bash
 chmod +x nmap_service_scanner.sh
-./nmap_service_scanner.sh
+./tanker.sh
