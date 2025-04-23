@@ -94,6 +94,19 @@ SERVICES=(
     "snmp:161:UDP:snmp-sysdescr"
 )
 
+# Check for missing scripts in nmap and skip tests
+check_nmap_scripts() {
+    local scripts="$1"
+    IFS=',' read -r -a script_array <<< "$scripts"
+    for script in "${script_array[@]}"; do
+        if ! nmap --script="$script" --version >/dev/null 2>&1; then
+            echo -e "[!] Warning: Nmap script '$script' not found. Skipping." | tee -a "$REPORT_FILE"
+            return 1
+        fi
+    done
+    return 0
+}
+
 # Validate IP or CIDR notation
 validate_ip_or_cidr() {
     local input="$1"
@@ -149,16 +162,20 @@ for service in "${SERVICES[@]}"; do
 
     # Check if port is open
     if echo "$scan_output" | grep -q "Ports:.*open"; then
-       echo -e "[+] $name port $port is open." | tee -a "$REPORT_FILE"
-       if [[ -n "$scripts" ]]; then
-       	echo -e "Running scripts: $scripts" | tee -a "$REPORT_FILE"
-        echo -e "----- Plugin Output for $name -----" | tee -a "$REPORT_FILE"
-        if [[ $proto == "TCP" ]]; then
-            nmap -n -sSV -p "$port" --min-rate=1000 --script "$scripts" "$TARGET" -oN temp_result.txt >/dev/null
+        echo -e "[+] $name port $port is open." | tee -a "$REPORT_FILE"
+        if [[ -n "$scripts" ]]; then
+          if check_nmap_scripts "$scripts"; then
+            echo -e "Running scripts: $scripts" | tee -a "$REPORT_FILE"
+            echo -e "----- Plugin Output for $name -----" | tee -a "$REPORT_FILE"
+            if [[ $proto == "TCP" ]]; then
+                nmap -n -sSV -p "$port" --min-rate=1000 --script "$scripts" "$TARGET" -oN temp_result.txt >/dev/null
+            else
+                nmap -n -sUV -p "$port" --min-rate=1000 --script "$scripts" "$TARGET" -oN temp_result.txt >/dev/null
+            fi
+            cat temp_result.txt | tee -a "$REPORT_FILE"
         else
-            nmap -n -sUV -p "$port" --min-rate=1000 --script "$scripts" "$TARGET" -oN temp_result.txt >/dev/null
+            echo -e "Skipping script execution due to missing scripts." | tee -a "$REPORT_FILE"
         fi
-        cat temp_result.txt | tee -a "$REPORT_FILE"
     else
         echo -e "No scripts specified. Running version scan only." | tee -a "$REPORT_FILE"
         echo -e "----- Plugin Output for $name -----" | tee -a "$REPORT_FILE"
